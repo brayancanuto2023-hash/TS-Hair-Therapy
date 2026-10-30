@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TS Hair Therapy | Thalita Silveira - Terapeuta Capilar</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            50: '#FAF8F2',
+                            100: '#F3EDE0',
+                            200: '#E5D6BD',
+                            300: '#D5BD97',
+                            400: '#C5A371',
+                            500: '#B88E4B',
+                            600: '#9B7238',
+                            700: '#7B572B',
+                            800: '#5F4123',
+                            900: '#462F1B',
+                        },
+                        cream: {
+                            50: '#FFFEFB',
+                            100: '#FDFBF7',
+                            200: '#FAF6EF',
+                            300: '#F4ECE1',
+                        },
+                        charcoal: '#1A1817',
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAF6EF;
+            color: #1A1817;
+            overflow-x: hidden;
+        }
+        .font-serif-title {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #D5BD97 0%, #B88E4B 50%, #9B7238 100%);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #B88E4B 0%, #7B572B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-card {
+            background: rgba(255, 254, 251, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(213, 189, 151, 0.3);
+        }
+        .gold-border-glow {
+            box-shadow: 0 0 20px rgba(184, 142, 75, 0.15);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF6EF;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D5BD97;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #B88E4B;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- BARRA DE NOTIFICAÇÃO DO TOPO -->
+    <div class="gold-gradient text-white text-xs md:text-sm py-2 px-4 text-center font-medium shadow-sm">
+        <i class="fa-solid fa-sparkles mr-1.5"></i>
+        Atendimento exclusivo com hora marcada • Terça a Sábado das 07h às 18h
+    </div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-40 glass-card border-b border-gold-200/50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- LOGO / BRAND -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-full gold-gradient flex items-center justify-center text-white font-serif-title font-bold text-xl shadow-md group-hover:scale-105 transition-transform">
+                    TS
+                </div>
+                <div>
+                    <span class="block font-serif-title text-2xl font-bold tracking-wide text-charcoal leading-none">TS Hair Therapy</span>
+                    <span class="text-xs tracking-widest text-gold-600 uppercase font-medium">Thalita Silveira</span>
+                </div>
+            </a>
+
+            <!-- QUICK ACTIONS DESKTOP -->
+            <div class="hidden md:flex items-center gap-3">
+                <button onclick="openInstagramModal()" class="px-4 py-2 rounded-full border border-gold-300 text-gold-800 hover:bg-gold-50 transition-colors text-sm font-medium flex items-center gap-2">
+                    <i class="fa-brands fa-instagram text-pink-600"></i>
+                    <span>@thalita.silveira.fios</span>
+                </button>
+                <button onclick="openPoliciesModal()" class="px-4 py-2 rounded-full border border-gold-300 text-gold-800 hover:bg-gold-50 transition-colors text-sm font-medium flex items-center gap-2">
+                    <i class="fa-solid fa-file-contract text-gold-600"></i>
+                    <span>Políticas & PIX</span>
+                </button>
+                <button onclick="openBookingModal()" class="px-5 py-2.5 rounded-full gold-gradient text-white hover:opacity-95 shadow-md transition-all text-sm font-semibold flex items-center gap-2">
+                    <i class="fa-regular fa-calendar-check"></i>
+                    <span>Agendar Horário</span>
+                </button>
+            </div>
+
+            <!-- MOBILE MENU BUTTON -->
+            <div class="flex items-center gap-2 md:hidden">
+                <button onclick="openBookingModal()" class="p-2.5 rounded-full gold-gradient text-white text-sm shadow-sm">
+                    <i class="fa-regular fa-calendar-check"></i>
+                </button>
+                <button onclick="toggleMobileMenu()" class="p-2.5 rounded-xl border border-gold-200 text-gold-800 bg-white">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- MOBILE MENU DROPDOWN -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-gold-200 bg-cream-100 p-4 space-y-2">
+            <button onclick="openInstagramModal(); toggleMobileMenu();" class="w-full text-left px-4 py-3 rounded-xl bg-white border border-gold-200 flex items-center gap-3 font-medium text-sm">
+                <i class="fa-brands fa-instagram text-pink-600 text-lg"></i>
+                <span>Instagram Oficial</span>
+            </button>
+            <button onclick="openPoliciesModal(); toggleMobileMenu();" class="w-full text-left px-4 py-3 rounded-xl bg-white border border-gold-200 flex items-center gap-3 font-medium text-sm">
+                <i class="fa-solid fa-shield-halved text-gold-600 text-lg"></i>
+                <span>Políticas de Agendamento & PIX</span>
+            </button>
+            <button onclick="scrollToSection('calculator'); toggleMobileMenu();" class="w-full text-left px-4 py-3 rounded-xl bg-white border border-gold-200 flex items-center gap-3 font-medium text-sm">
+                <i class="fa-solid fa-calculator text-gold-600 text-lg"></i>
+                <span>Simulador de Preços</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- HERO SECTION -->
+        <section class="relative py-12 md:py-20 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- TEXT & PRESENTATION -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold-100/80 border border-gold-300 text-gold-800 text-xs font-semibold tracking-wider uppercase">
+                            <i class="fa-solid fa-gem"></i> Terapia Capilar Personalizada
+                        </div>
+                        
+                        <h1 class="font-serif-title text-4xl sm:text-5xl lg:text-6xl font-bold text-charcoal leading-tight">
+                            Cuidando da sua beleza com <span class="gold-gradient-text italic">propósito & excelência</span>
+                        </h1>
+                        
+                        <p class="text-gray-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                            Prazer, sou <strong>Thalita Silveira</strong>! Cristã, esposa, mãe e apaixonada pelo bem-estar e saúde dos fios. Com cerca de 10 anos de experiência como cabeleireira, uni o cuidado estético ao conhecimento da terapia capilar para devolver vida, confiança e autoestima ao seu cabelo.
+                        </p>
+
+                        <!-- STATS / HIGHLIGHTS -->
+                        <div class="grid grid-cols-3 gap-3 pt-2 max-w-md mx-auto lg:mx-0">
+                            <div class="bg-white/70 p-3 rounded-2xl border border-gold-200 text-center">
+                                <span class="block font-serif-title text-2xl font-bold text-gold-700">+10 Anos</span>
+                                <span class="text-xs text-gray-500">De Experiência</span>
+                            </div>
+                            <div class="bg-white/70 p-3 rounded-2xl border border-gold-200 text-center">
+                                <span class="block font-serif-title text-2xl font-bold text-gold-700">100%</span>
+                                <span class="text-xs text-gray-500">Personalizado</span>
+                            </div>
+                            <div class="bg-white/70 p-3 rounded-2xl border border-gold-200 text-center">
+                                <span class="block font-serif-title text-2xl font-bold text-gold-700">TS Hair</span>
+                                <span class="text-xs text-gray-500">Terapia Capilar</span>
+                            </div>
+                        </div>
+
+                        <!-- HERO BUTTONS -->
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                            <button onclick="openBookingModal()" class="w-full sm:w-auto px-8 py-4 rounded-full gold-gradient text-white font-semibold shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all flex items-center justify-center gap-3">
+                                <i class="fa-brands fa-whatsapp text-xl"></i>
+                                <span>Agendar Consulta Capilar</span>
+                            </button>
+                            <button onclick="scrollToSection('catalog')" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white border border-gold-300 text-gold-800 font-semibold shadow-sm hover:bg-gold-50 transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-list"></i>
+                                <span>Explorar Catálogo</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- PROFILE CARD / PHOTO -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-full max-w-md">
+                            <!-- DECORATIVE ELEMENTS -->
+                            <div class="absolute -top-4 -left-4 w-72 h-72 bg-gold-200 rounded-full blur-3xl opacity-40 -z-10"></div>
+                            <div class="absolute -bottom-4 -right-4 w-72 h-72 bg-gold-300 rounded-full blur-3xl opacity-30 -z-10"></div>
+
+                            <div class="glass-card p-4 rounded-3xl gold-border-glow border border-gold-300 relative">
+                                <div class="relative rounded-2xl overflow-hidden aspect-[4/5] bg-gold-100 flex items-center justify-center">
+                                    <!-- Avatar fallback image -->
+                                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=800" 
+                                         alt="Thalita Silveira - Terapeuta Capilar" 
+                                         class="w-full h-full object-cover">
+                                    
+                                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-charcoal/90 via-charcoal/40 to-transparent p-6 text-white">
+                                        <h3 class="font-serif-title text-2xl font-bold">Thalita Silveira</h3>
+                                        <p class="text-xs text-gold-200 font-light">Terapeuta Capilar & Especialista em Saúde dos Fios</p>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4 p-3 rounded-xl bg-gold-50 border border-gold-200 flex items-center justify-between text-xs text-gold-900">
+                                    <span class="flex items-center gap-2 font-medium">
+                                        <i class="fa-solid fa-location-dot text-gold-600"></i> Atendimento Especializado
+                                    </span>
+                                    <button onclick="openInstagramModal()" class="text-pink-700 hover:underline font-semibold flex items-center gap-1">
+                                        <i class="fa-brands fa-instagram"></i> Ver Insta
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- GUIA VISUAL DE COMPRIMENTO DE CABELO -->
+        <section class="py-12 bg-white/60 border-y border-gold-200/60">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <span class="text-xs font-bold uppercase tracking-widest text-gold-600">Guia Informativo</span>
+                    <h2 class="font-serif-title text-3xl sm:text-4xl font-bold text-charcoal mt-1">Comprimento do Cabelo</h2>
+                    <p class="text-sm text-gray-600 mt-2">Os valores de alguns procedimentos variam conforme o comprimento dos seus fios. Identifique o seu abaixo:</p>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                    <!-- EXTRA CURTO -->
+                    <div class="bg-cream-100 p-4 rounded-2xl border border-gold-200 text-center hover:border-gold-400 hover:shadow-md transition-all group">
+                        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-gold-100 flex items-center justify-center text-gold-700 font-bold group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-scissors"></i>
+                        </div>
+                        <h4 class="font-serif-title text-lg font-bold text-charcoal">Extra Curto</h4>
+                        <p class="text-[11px] text-gray-500 mt-1">Acima da orelha ou batidinho</p>
+                    </div>
+
+                    <!-- CURTO -->
+                    <div class="bg-cream-100 p-4 rounded-2xl border border-gold-200 text-center hover:border-gold-400 hover:shadow-md transition-all group">
+                        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-gold-100 flex items-center justify-center text-gold-700 font-bold group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <h4 class="font-serif-title text-lg font-bold text-charcoal">Curto</h4>
+                        <p class="text-[11px] text-gray-500 mt-1">Até a altura do queixo</p>
+                    </div>
+
+                    <!-- MÉDIO -->
+                    <div class="bg-cream-100 p-4 rounded-2xl border border-gold-200 text-center hover:border-gold-400 hover:shadow-md transition-all group">
+                        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-gold-100 flex items-center justify-center text-gold-700 font-bold group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-person-dots-from-line"></i>
+                        </div>
+                        <h4 class="font-serif-title text-lg font-bold text-charcoal">Médio</h4>
+                        <p class="text-[11px] text-gray-500 mt-1">Até a altura dos ombros</p>
+                    </div>
+
+                    <!-- LONGO -->
+                    <div class="bg-cream-100 p-4 rounded-2xl border border-gold-200 text-center hover:border-gold-400 hover:shadow-md transition-all group">
+                        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-gold-100 flex items-center justify-center text-gold-700 font-bold group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-feather"></i>
+                        </div>
+                        <h4 class="font-serif-title text-lg font-bold text-charcoal">Longo</h4>
+                        <p class="text-[11px] text-gray-500 mt-1">Até o meio das costas</p>
+                    </div>
+
+                    <!-- EXTRA LONGO -->
+                    <div class="bg-cream-100 p-4 rounded-2xl border border-gold-200 text-center hover:border-gold-400 hover:shadow-md transition-all group">
+                        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-gold-100 flex items-center justify-center text-gold-700 font-bold group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <h4 class="font-serif-title text-lg font-bold text-charcoal">Extra Longo</h4>
+                        <p class="text-[11px] text-gray-500 mt-1">Na altura da cintura</p>
+                    </div>
+
+                    <!-- RAPUNZEL -->
+                    <div class="bg-cream-100 p-4 rounded-2xl border border-gold-200 text-center hover:border-gold-400 hover:shadow-md transition-all group">
+                        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-gold-100 flex items-center justify-center text-gold-700 font-bold group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-crown"></i>
+                        </div>
+                        <h4 class="font-serif-title text-lg font-bold text-charcoal">Rapunzel</h4>
+                        <p class="text-[11px] text-gray-500 mt-1">Abaixo do quadril</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATALOGO COMPLETO INTERATIVO -->
+        <section id="catalog" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs font-bold uppercase tracking-widest text-gold-600">Nosso Menu de Procedimentos</span>
+                <h2 class="font-serif-title text-3xl sm:text-5xl font-bold text-charcoal mt-1">Catálogo de Serviços</h2>
+                <p class="text-sm text-gray-600 mt-2">Selecione uma categoria para explorar nossos tratamentos exclusivos com valores e detalhes completos.</p>
+            </div>
+
+            <!-- CATEGORY TABS -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10" id="categoryTabs">
+                <button onclick="filterCategory('all')" class="cat-tab active px-5 py-2.5 rounded-full text-sm font-semibold transition-all gold-gradient text-white shadow-sm">
+                    Todos os Serviços
+                </button>
+                <button onclick="filterCategory('alisamentos')" class="cat-tab px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-white text-gray-700 border border-gold-200 hover:bg-gold-50">
+                    Alisamentos & Realinhamentos
+                </button>
+                <button onclick="filterCategory('terapias')" class="cat-tab px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-white text-gray-700 border border-gold-200 hover:bg-gold-50">
+                    Terapias Capilares
+                </button>
+                <button onclick="filterCategory('coloracao')" class="cat-tab px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-white text-gray-700 border border-gold-200 hover:bg-gold-50">
+                    Coloração
+                </button>
+                <button onclick="filterCategory('outros')" class="cat-tab px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-white text-gray-700 border border-gold-200 hover:bg-gold-50">
+                    Outros Serviços
+                </button>
+                <button onclick="filterCategory('combos')" class="cat-tab px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-white text-gray-700 border border-gold-200 hover:bg-gold-50">
+                    Protocolos Especiais (Combos)
+                </button>
+            </div>
+
+            <!-- GRID DE SERVIÇOS -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="servicesGrid">
+                
+                <!-- ALINHAMENTO CONSCIENTE -->
+                <div class="service-card glass-card rounded-3xl p-6 flex flex-col justify-between border border-gold-200 hover:border-gold-400 hover:shadow-lg transition-all" data-category="alisamentos">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-gold-100 text-gold-800 uppercase tracking-wide">Alisamentos</span>
+                            <span class="text-xs text-gray-500"><i class="fa-regular fa-clock mr-1"></i> Sob consulta</span>
+                        </div>
+                        <h3 class="font-serif-title text-2xl font-bold text-charcoal">Alinhamento Consciente</h3>
+                        <p class="text-xs font-semibold text-gold-700 mb-3">Alisamento Terapêutico</p>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Procedimento de alisamento realizado com avaliação prévia e atenção total às condições dos fios, buscando conciliar o resultado impecável com uma abordagem cuidadosa e responsável.
+                        </p>
+                    </div>
+
+                    <div class="pt-4 border-t border-gold-200/60 mt-auto">
+                        <div class="flex justify-between items-baseline mb-4">
+                            <span class="text-xs text-gray-500">Valor Inicial:</span>
+                            <span class="font-serif-title text-2xl font-bold text-gold-800">A partir de R$ 200,00</span>
+                        </div>
+                        <button onclick="openBookingModal('Alinhamento Consciente', 200)" class="w-full py-3 rounded-2xl gold-gradient text-white font-semibold text-sm shadow hover:opacity-95 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            <span>Ver Detalhes & Agendar</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ESSÊNCIA CAPILAR -->
+                <div class="service-card glass-card rounded-3xl p-6 flex flex-col justify-between border border-gold-200 hover:border-gold-400 hover:shadow-lg transition-all" data-category="terapias">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800 uppercase tracking-wide">Terapia Capilar</span>
+                            <span class="text-xs text-gray-500"><i class="fa-regular fa-clock mr-1"></i> Sessão Individual</span>
+                        </div>
+                        <h3 class="font-serif-title text-2xl font-bold text-charcoal">Essência Capilar</h3>
+                        <p class="text-xs font-semibold text-gold-700 mb-3">Tratamento Personalizado com Finalização</p>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Protocolo desenvolvido a partir da avaliação rigorosa das necessidades dos fios, com cuidados selecionados individualmente para recuperar saúde e brilho. Incluso finalização completa.
+                        </p>
+                    </div>
+
+                    <div class="pt-4 border-t border-gold-200/60 mt-auto">
+                        <div class="flex justify-between items-baseline mb-4">
+                            <span class="text-xs text-gray-500">Valor Fixo:</span>
+                            <span class="font-serif-title text-2xl font-bold text-gold-800">R$ 100,00</span>
+                        </div>
+                        <button onclick="openBookingModal('Essência Capilar', 100)" class="w-full py-3 rounded-2xl gold-gradient text-white font-semibold text-sm shadow hover:opacity-95 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            <span>Ver Detalhes & Agendar</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- JORNADA CAPILAR -->
+                <div class="service-card glass-card rounded-3xl p-6 flex flex-col justify-between border border-gold-200 hover:border-gold-400 hover:shadow-lg transition-all relative overflow-hidden" data-category="terapias">
+                    <div class="absolute top-0 right-0 bg-gold-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wider">
+                        Tratamento Completo
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800 uppercase tracking-wide">Terapia Capilar</span>
+                            <span class="text-xs text-gray-500"><i class="fa-regular fa-calendar-days mr-1"></i> 3 Sessões</span>
+                        </div>
+                        <h3 class="font-serif-title text-2xl font-bold text-charcoal">Jornada Capilar</h3>
+                        <p class="text-xs font-semibold text-gold-700 mb-3">Nutrição Essencial Intensiva</p>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Experiência de cuidado estruturada em 3 sessões contínuas. Tratamentos direcionados às necessidades específicas identificadas e acompanhamento detalhado da evolução dos fios.
+                        </p>
+                    </div>
+
+                    <div class="pt-4 border-t border-gold-200/60 mt-auto">
+                        <div class="flex justify-between items-baseline mb-4">
+                            <span class="text-xs text-gray-500">Pacote 3 Sessões:</span>
+                            <span class="font-serif-title text-2xl font-bold text-gold-800">R$ 280,00</span>
+                        </div>
+                        <button onclick="openBookingModal('Jornada Capilar (3 Sessões)', 280)" class="w-full py-3 rounded-2xl gold-gradient text-white font-semibold text-sm shadow hover:opacity-95 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            <span>Ver Detalhes & Agendar</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ESSÊNCIA RAIZ & EQUILÍBRIO -->
+                <div class="service-card glass-card rounded-3xl p-6 flex flex-col justify-between border border-gold-200 hover:border-gold-400 hover:shadow-lg transition-all" data-category="terapias">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800 uppercase tracking-wide">Terapia Capilar</span>
+                            <span class="text-xs text-gray-500"><i class="fa-solid fa-spa mr-1"></i> Ritual Relax</span>
+                        </div>
+                        <h3 class="font-serif-title text-2xl font-bold text-charcoal">Essência Raiz & Equilíbrio</h3>
+                        <p class="text-xs font-semibold text-gold-700 mb-3">Cuidado do Couro Cabeludo + Massagem</p>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Ritual de cuidado especial que combina atenção profunda ao couro cabeludo, massagem estimulante e relaxamento. Uma experiência acolhedora que une bem-estar e saúde capilar.
+                        </p>
+                    </div>
+
+                    <div class="pt-4 border-t border-gold-200/60 mt-auto">
+                        <div class="flex justify-between items-baseline mb-4">
+                            <span class="text-xs text-gray-500">Valor Fixo:</span>
+                            <span class="font-serif-title text-2xl font-bold text-gold-800">R$ 120,00</span>
+                        </div>
+                        <button onclick="openBookingModal('Essência Raiz & Equilíbrio', 120)" class="w-full py-3 rounded-2xl gold-gradient text-white font-semibold text-sm shadow hover:opacity-95 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            <span>Ver Detalhes & Agendar</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CURVATURA VIVA -->
+                <div class="service-card glass-card rounded-3xl p-6 flex flex-col justify-between border border-gold-200 hover:border-gold-400 hover:shadow-lg transition-all" data-category="terapias">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-amber-100 text-amber-800 uppercase tracking-wide">Crespos & Cacheados</span>
+                            <span class="text-xs text-gray-500"><i class="fa-solid fa-leaf mr-1"></i> Bioativados</span>
+                        </div>
+                        <h3 class="font-serif-title text-2xl font-bold text-charcoal">Curvatura Viva</h3>
+                        <p class="text-xs font-semibold text-gold-700 mb-3">Terapia Especializada para Cachos</p>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Protocolo exclusivo formulado com ativos bioativados, desenvolvido para revitalizar, nutrir e valorizar as características e particularidades dos cabelos crespos e cacheados.
+                        </p>
+                    </div>
+
+                    <div class="pt-4 border-t border-gold-200/60 mt-auto">
+                        <div class="flex justify-between items-baseline mb-4">
+                            <span class="text-xs text-gray-500">Valor Fixo:</span>
+                            <span class="font-serif-title text-2xl font-bold text-gold-800">R$ 120,00</span>
+                        </div>
+                        <button onclick="openBookingModal('Curvatura Viva', 120)" class="w-full py-3 rounded-2xl gold-gradient text-white font-semibold text-sm shadow hover:opacity-95 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            <span>Ver Detalhes & Agendar</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TONALIZAÇÃO -->
+                <div class="service-card glass-card rounded-3xl p-6 flex flex-col justify-between border border-gold-200 hover:border-gold-400 hover:shadow-lg transition-all" data-category="coloracao">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-purple-100 text-purple-800 uppercase tracking-wide">Coloração</span>
+                            <span class="text-xs text-gray-500"><i class="fa-solid fa-palette mr-1"></i> Brilho & Tom</span>
+                        </div>
+                        <h3 class="font-serif-title text-2xl font-bold text-charcoal">Tonalização</h3>
+                        <p class="text-xs font-semibold text-gold-700 mb-3">Realce e Pontos de Luz</p>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Técnica suave que realça o tom dos fios com profundidade, brilho e naturalidade. Ideal para revigorar a cor e trazer luminosidade sofisticada aos cabelos.
+                        </p>
+                    </div>
+
+                    <div class="pt-4 border-t border-gold-200/60 mt-auto">
+                        <div class="space-y-1 mb-4 text-xs">
+                            <div class="flex justify-between text-gray-600">
+                                <span>Com tinta da cliente:</span>
+                                <span class="font-bold text-charcoal">R$ 60,00</span>
+                            </div>
+                            <div class="flex justify-between text-gray-600">
+                                <span>Com tinta do salão:</span>
+                                <span class="font-bold text-gold-800">R$ 90,00</span>
+                            </div>
+                        </div>
+                        <button onclick="openBookingModal('Tonalização', 90)" class="w-full py-3 rounded-2xl gold-gradient text-white font-semibold text-sm shadow hover:opacity-95 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            <span>Ver Detalhes & Agendar</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- BANHO DE BRILHO -->
+                <div class="service-card glass-card rounded-3xl p-6 flex flex-col justify-between border border-gold-200 hover:border-gold-400 hover:shadow-lg transition-all" data-category="coloracao">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-purple-100 text-purple-800 uppercase tracking-wide">Coloração</span>
+                            <span class="text-xs text-gray-500"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Revitalização</span>
+                        </div>
+                        <h3 class="font-serif-title text-2xl font-bold text-charcoal">Banho de Brilho</h3>
+                        <p class="text-xs font-semibold text-gold-700 mb-3">Intensificador de Cor e Sedosidade</p>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Tratamento que intensifica a cor, devolve a luminosidade radiante e deixa os fios extremamente saudáveis e macios. Perfeito para cabelos opacos.
+                        </p>
+                    </div>
+
+                    <div class="pt-4 border-t border-gold-200/60 mt-auto">
+                        <div class="space-y-1 mb-4 text-xs">
+                            <div class="flex justify-between text-gray-600">
+                                <span>Com tinta da cliente:</span>
+                                <span class="font-bold text-charcoal">R$ 100,00</span>
+                            </div>
+                            <div class="flex justify-between text-gray-600">
+                                <span>Com tinta do salão:</span>
+                                <span class="font-bold text-gold-800">R$ 130,00</span>
+                            </div>
+                        </div>
+                        <button onclick="openBookingModal('Banho de Brilho', 130)" class="w-full py-3 rounded-2xl gold-gradient text-white font-semibold text-sm shadow hover:opacity-95 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            <span>Ver Detalhes & Agendar</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- LISO EM MOVIMENTO -->
+                <div class="service-card glass-card rounded-3xl p-6 flex flex-col justify-between border border-gold-200 hover:border-gold-400 hover:shadow-lg transition-all" data-category="outros">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-blue-100 text-blue-800 uppercase tracking-wide">Finalização</span>
+                            <span class="text-xs text-gray-500"><i class="fa-solid fa-wind mr-1"></i> Escova / Babyliss</span>
+                        </div>
+                        <h3 class="font-serif-title text-2xl font-bold text-charcoal">Liso em Movimento</h3>
+                        <p class="text-xs font-semibold text-gold-700 mb-3">Higienização + Escova ou Babyliss</p>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Serviço essencial que combina higienização profissional com lavatório e finalização caprichada em escova ou babyliss, respeitando o desejo e estilo do cliente.
+                        </p>
+                    </div>
+
+                    <div class="pt-4 border-t border-gold-200/60 mt-auto">
+                        <div class="flex justify-between items-baseline mb-4">
+                            <span class="text-xs text-gray-500">A partir de:</span>
+                            <span class="font-serif-title text-2xl font-bold text-gold-800">R$ 70,00</span>
+                        </div>
+                        <button onclick="openBookingModal('Liso em Movimento', 70)" class="w-full py-3 rounded-2xl gold-gradient text-white font-semibold text-sm shadow hover:opacity-95 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            <span>Ver Detalhes & Agendar</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ASSINATURA DOS CACHOS -->
+                <div class="service-card glass-card rounded-3xl p-6 flex flex-col justify-between border border-gold-200 hover:border-gold-400 hover:shadow-lg transition-all" data-category="outros">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-amber-100 text-amber-800 uppercase tracking-wide">Finalização</span>
+                            <span class="text-xs text-gray-500"><i class="fa-solid fa-ribbon mr-1"></i> Definição Natural</span>
+                        </div>
+                        <h3 class="font-serif-title text-2xl font-bold text-charcoal">Assinatura dos Cachos</h3>
+                        <p class="text-xs font-semibold text-gold-700 mb-3">Higienização e Finalização de Ondulados/Crespos</p>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Serviço sob medida de higienização e finalização com técnicas de fitagem e definição pensadas para valorizar a curvatura natural e a beleza genuína do seu cabelo.
+                        </p>
+                    </div>
+
+                    <div class="pt-4 border-t border-gold-200/60 mt-auto">
+                        <div class="flex justify-between items-baseline mb-4">
+                            <span class="text-xs text-gray-500">A partir de:</span>
+                            <span class="font-serif-title text-2xl font-bold text-gold-800">R$ 60,00</span>
+                        </div>
+                        <button onclick="openBookingModal('Assinatura dos Cachos', 60)" class="w-full py-3 rounded-2xl gold-gradient text-white font-semibold text-sm shadow hover:opacity-95 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            <span>Ver Detalhes & Agendar</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- COMBO: HIDRATAÇÃO + ESCOVA -->
+                <div class="service-card glass-card rounded-3xl p-6 flex flex-col justify-between border-2 border-gold-400 hover:shadow-xl transition-all relative overflow-hidden bg-gradient-to-b from-white via-cream-100 to-gold-50/40" data-category="combos">
+                    <div class="absolute top-0 right-0 gold-gradient text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wider">
+                        Mais Vendido 🔥
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-gold-200 text-gold-900 uppercase tracking-wide">Protocolo Combo</span>
+                            <span class="text-xs text-gold-700 font-semibold"><i class="fa-solid fa-star mr-1"></i> Custo-Benefício</span>
+                        </div>
+                        <h3 class="font-serif-title text-2xl font-bold text-charcoal">Combo: Hidratação + Escova</h3>
+                        <p class="text-xs font-semibold text-gold-700 mb-3">Transformação Completa Express</p>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            A combinação perfeita para quem busca fios hidratados, brilhantes, sedosos e prontos para qualquer ocasião especial com valor promocional exclusivo!
+                        </p>
+                    </div>
+
+                    <div class="pt-4 border-t border-gold-200 mt-auto">
+                        <div class="flex justify-between items-baseline mb-4">
+                            <span class="text-xs text-gray-500">Combo Especial:</span>
+                            <span class="font-serif-title text-3xl font-bold text-gold-800">R$ 80,00</span>
+                        </div>
+                        <button onclick="openBookingModal('Combo: Hidratação + Escova', 80)" class="w-full py-3.5 rounded-2xl gold-gradient text-white font-bold text-sm shadow-md hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            <span>Aproveitar Combo & Agendar</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SIMULADOR E CALCULADORA DE SERVIÇOS -->
+        <section id="calculator" class="py-16 bg-cream-300/40 border-y border-gold-200">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="glass-card rounded-3xl p-6 sm:p-10 border border-gold-300 shadow-xl">
+                    <div class="text-center max-w-xl mx-auto mb-8">
+                        <div class="w-12 h-12 rounded-full bg-gold-100 text-gold-700 flex items-center justify-center mx-auto mb-3 text-xl">
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                        <h2 class="font-serif-title text-3xl font-bold text-charcoal">Simulador de Agendamento</h2>
+                        <p class="text-xs sm:text-sm text-gray-600 mt-1">Calcule o valor estimado do seu procedimento selecionando o serviço e o tamanho do seu cabelo.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- SELECT SERVICE -->
+                        <div>
+                            <label class="block text-xs font-bold text-charcoal uppercase tracking-wider mb-2">1. Escolha o Serviço:</label>
+                            <select id="calcService" onchange="updateCalculatedPrice()" class="w-full bg-white border border-gold-300 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-gold-500 outline-none text-gray-800">
+                                <option value="200" data-name="Alinhamento Consciente">Alinhamento Consciente (A partir de R$ 200)</option>
+                                <option value="100" data-name="Essência Capilar">Essência Capilar (R$ 100)</option>
+                                <option value="280" data-name="Jornada Capilar (3 Sessões)">Jornada Capilar (R$ 280)</option>
+                                <option value="120" data-name="Essência Raiz & Equilíbrio">Essência Raiz & Equilíbrio (R$ 120)</option>
+                                <option value="120" data-name="Curvatura Viva">Curvatura Viva (R$ 120)</option>
+                                <option value="90" data-name="Tonalização">Tonalização (A partir de R$ 60 - R$ 90)</option>
+                                <option value="130" data-name="Banho de Brilho">Banho de Brilho (A partir de R$ 100 - R$ 130)</option>
+                                <option value="70" data-name="Liso em Movimento">Liso em Movimento (A partir de R$ 70)</option>
+                                <option value="60" data-name="Assinatura dos Cachos">Assinatura dos Cachos (A partir de R$ 60)</option>
+                                <option value="80" data-name="Combo: Hidratação + Escova">Combo: Hidratação + Escova (R$ 80)</option>
+                            </select>
+                        </div>
+
+                        <!-- SELECT HAIR LENGTH -->
+                        <div>
+                            <label class="block text-xs font-bold text-charcoal uppercase tracking-wider mb-2">2. Comprimento do Cabelo:</label>
+                            <select id="calcLength" onchange="updateCalculatedPrice()" class="w-full bg-white border border-gold-300 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-gold-500 outline-none text-gray-800">
+                                <option value="0">Extra Curto / Curto (Valor Padrão)</option>
+                                <option value="20">Médio (+ R$ 20,00 no procedimento de variação)</option>
+                                <option value="40">Longo (+ R$ 40,00 no procedimento de variação)</option>
+                                <option value="60">Extra Longo / Rapunzel (+ R$ 60,00 no procedimento de variação)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- RESULT DISPLAY -->
+                    <div class="mt-8 p-6 rounded-2xl bg-gold-50 border border-gold-200 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <div>
+                            <span class="text-xs text-gold-800 font-semibold uppercase tracking-wider block">Estimativa Final</span>
+                            <span id="calcTotalDisplay" class="font-serif-title text-3xl font-bold text-gold-900">R$ 200,00</span>
+                            <p class="text-[11px] text-gray-500 mt-0.5">*Sinal de R$ 30,00 para garantir horário (descontado do total no dia).</p>
+                        </div>
+
+                        <button onclick="bookFromCalculator()" class="w-full sm:w-auto px-6 py-3.5 rounded-2xl gold-gradient text-white font-bold text-sm shadow hover:scale-105 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>Agendar com Esta Estimativa</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DE POLÍTICAS E REGRAS RÁPIDAS -->
+        <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                
+                <div class="space-y-6">
+                    <span class="text-xs font-bold uppercase tracking-widest text-gold-600">Transparência & Respeito</span>
+                    <h2 class="font-serif-title text-3xl sm:text-4xl font-bold text-charcoal">Política de Agendamento</h2>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Para proporcionar uma experiência exclusiva, pontual e confortável para cada cliente, adotamos algumas diretrizes simples em nosso espaço:
+                    </p>
+
+                    <ul class="space-y-4 text-sm text-gray-700">
+                        <li class="flex items-start gap-3 bg-white p-3.5 rounded-2xl border border-gold-200">
+                            <div class="w-7 h-7 rounded-full bg-gold-100 text-gold-700 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">1</div>
+                            <div>
+                                <strong class="text-charcoal block">Sinal de Reserva: R$ 30,00</strong>
+                                Para confirmar seu horário é necessário o pagamento prévio do sinal de R$ 30,00. Esse valor é abatido no total do serviço.
+                            </div>
+                        </li>
+
+                        <li class="flex items-start gap-3 bg-white p-3.5 rounded-2xl border border-gold-200">
+                            <div class="w-7 h-7 rounded-full bg-gold-100 text-gold-700 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">2</div>
+                            <div>
+                                <strong class="text-charcoal block">Tolerância de 15 Minutos</strong>
+                                Toleramos até 15 min de atraso. Após esse período, o atendimento pode ser reagendado ou ajustado.
+                            </div>
+                        </li>
+
+                        <li class="flex items-start gap-3 bg-white p-3.5 rounded-2xl border border-gold-200">
+                            <div class="w-7 h-7 rounded-full bg-gold-100 text-gold-700 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">3</div>
+                            <div>
+                                <strong class="text-charcoal block">Reagendamento Prévio</strong>
+                                Reagendamentos devem ser avisados com no mínimo 24 horas de antecedência.
+                            </div>
+                        </li>
+
+                        <li class="flex items-start gap-3 bg-white p-3.5 rounded-2xl border border-gold-200">
+                            <div class="w-7 h-7 rounded-full bg-gold-100 text-gold-700 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">4</div>
+                            <div>
+                                <strong class="text-charcoal block">Atendimento Exclusivo</strong>
+                                Atendemos sem acompanhantes para garantir o conforto e privacidade do espaço.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- CARD DE FORMAS DE PAGAMENTO & PIX -->
+                <div class="glass-card rounded-3xl p-6 sm:p-8 border border-gold-300 shadow-xl space-y-6">
+                    <h3 class="font-serif-title text-2xl font-bold text-charcoal border-b border-gold-200 pb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-wallet text-gold-600"></i> Formas de Pagamento
+                    </h3>
+
+                    <div class="space-y-4">
+                        <!-- PIX BOX -->
+                        <div class="p-4 rounded-2xl bg-white border border-gold-300 space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs font-bold uppercase tracking-wider text-gold-800 flex items-center gap-2">
+                                    <i class="fa-solid fa-qrcode text-emerald-600"></i> Chave PIX (CNPJ)
+                                </span>
+                                <span class="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">Sem Taxa</span>
+                            </div>
+                            <p class="font-mono text-sm bg-gold-50 p-2.5 rounded-xl border border-gold-200 text-charcoal font-semibold select-all break-all text-center">
+                                69.639.535/0001-03
+                            </p>
+                            <p class="text-[11px] text-gray-500 text-center">Favorecida: Thalita Roberta Silveira de Souza da Costa</p>
+                            
+                            <button onclick="copyPixKey('69.639.535/0001-03')" class="w-full py-2.5 rounded-xl bg-gold-100 hover:bg-gold-200 text-gold-900 font-semibold text-xs transition-colors flex items-center justify-center gap-2">
+                                <i class="fa-regular fa-copy"></i>
+                                <span id="pixCopyBtnText">Copiar Chave PIX</span>
+                            </button>
+                        </div>
+
+                        <!-- DINHEIRO E CARTÃO -->
+                        <div class="grid grid-cols-2 gap-3 text-xs">
+                            <div class="p-3 bg-white rounded-xl border border-gold-200">
+                                <strong class="block text-charcoal mb-1"><i class="fa-solid fa-money-bill-wave text-emerald-600 mr-1"></i> Dinheiro</strong>
+                                <span class="text-gray-500">Por favor, avise com antecedência se precisar de troco.</span>
+                            </div>
+                            <div class="p-3 bg-white rounded-xl border border-gold-200">
+                                <strong class="block text-charcoal mb-1"><i class="fa-regular fa-credit-card text-blue-600 mr-1"></i> Cartões</strong>
+                                <span class="text-gray-500">Crédito e Débito aceitos (sujeito às taxas da maquininha).</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER E RODAPÉ -->
+    <footer class="bg-charcoal text-white pt-12 pb-8 border-t border-gold-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-white/10">
+                <!-- COL 1: BRAND -->
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full gold-gradient flex items-center justify-center text-white font-serif-title font-bold text-lg">
+                            TS
+                        </div>
+                        <span class="font-serif-title text-2xl font-bold tracking-wide">TS Hair Therapy</span>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Proporcionando cuidado capilar que vai além da estética, promovendo bem-estar, confiança e valorização da beleza individual.
+                    </p>
+                </div>
+
+                <!-- COL 2: CONTATO -->
+                <div class="space-y-2 text-xs text-gray-300">
+                    <h4 class="font-serif-title text-lg font-bold text-gold-300 mb-2">Atendimento & Agenda</h4>
+                    <p><i class="fa-regular fa-clock text-gold-400 mr-2"></i> Terça a Sábado: 07h00 às 18h00</p>
+                    <p><i class="fa-brands fa-whatsapp text-emerald-400 mr-2"></i> WhatsApp: (22) 99857-8815</p>
+                    <p><i class="fa-brands fa-instagram text-pink-400 mr-2"></i> Instagram: @thalita.silveira.fios</p>
+                </div>
+
+                <!-- COL 3: BOTAO RAPIDO -->
+                <div class="flex flex-col justify-center gap-3">
+                    <button onclick="openBookingModal()" class="w-full py-3 rounded-full gold-gradient text-white font-semibold text-xs shadow-md hover:opacity-90 transition-all flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-base"></i>
+                        <span>Solicitar Agendamento Direto</span>
+                    </button>
+                    <button onclick="openInstagramModal()" class="w-full py-3 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-xs transition-colors flex items-center justify-center gap-2 border border-white/20">
+                        <i class="fa-brands fa-instagram text-base"></i>
+                        <span>Visitar Perfil no Instagram</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="pt-6 text-center text-[11px] text-gray-400 flex flex-col sm:flex-row justify-between items-center gap-2">
+                <p>© TS Hair Therapy - Thalita Silveira. Todos os direitos reservados.</p>
+                <p class="text-gold-400/80">Sistema de Catálogo & Agendamento Interativo</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ==================== MODAIS DA APLICAÇÃO ==================== -->
+
+    <!-- 1. MODAL DE AGENDAMENTO (WHATSAPP AUTOMÁTICO) -->
+    <div id="bookingModal" class="fixed inset-0 bg-charcoal/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card bg-cream-50 rounded-3xl max-w-lg w-full p-6 sm:p-8 border border-gold-300 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            
+            <!-- CLOSE BUTTON -->
+            <button onclick="closeBookingModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-gold-100 text-gold-800 flex items-center justify-center hover:bg-gold-200 transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-full gold-gradient text-white flex items-center justify-center mx-auto mb-2 text-xl shadow-md">
+                    <i class="fa-regular fa-calendar-check"></i>
+                </div>
+                <h3 class="font-serif-title text-2xl font-bold text-charcoal">Agendar Atendimento</h3>
+                <p class="text-xs text-gray-600">Preencha os dados abaixo. Ao confirmar, você será redirecionada diretamente para o WhatsApp da profissional!</p>
+            </div>
+
+            <form id="bookingForm" onsubmit="submitBooking(event)" class="space-y-4 text-xs">
+                <div>
+                    <label class="block font-bold text-charcoal mb-1">Seu Nome Completo *</label>
+                    <input type="text" id="bookName" required placeholder="Ex: Maria Silva" class="w-full bg-white border border-gold-300 rounded-xl px-3.5 py-2.5 text-sm focus:ring-2 focus:ring-gold-500 outline-none">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-bold text-charcoal mb-1">Telefone / WhatsApp *</label>
+                        <input type="tel" id="bookPhone" required placeholder="(22) 99999-9999" class="w-full bg-white border border-gold-300 rounded-xl px-3.5 py-2.5 text-sm focus:ring-2 focus:ring-gold-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-charcoal mb-1">Tamanho do Cabelo</label>
+                        <select id="bookHairLength" class="w-full bg-white border border-gold-300 rounded-xl px-3.5 py-2.5 text-sm focus:ring-2 focus:ring-gold-500 outline-none">
+                            <option value="Extra Curto">Extra Curto</option>
+                            <option value="Curto">Curto</option>
+                            <option value="Médio" selected>Médio</option>
+                            <option value="Longo">Longo</option>
+                            <option value="Extra Longo">Extra Longo</option>
+                            <option value="Rapunzel">Rapunzel</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-bold text-charcoal mb-1">Procedimento Escolhido *</label>
+                    <input type="text" id="bookService" required readonly class="w-full bg-gold-100/70 border border-gold-300 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-gold-900 outline-none">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-bold text-charcoal mb-1">Dia Desejado *</label>
+                        <input type="date" id="bookDate" required class="w-full bg-white border border-gold-300 rounded-xl px-3.5 py-2.5 text-sm focus:ring-2 focus:ring-gold-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-charcoal mb-1">Horário Preferencial *</label>
+                        <select id="bookTime" required class="w-full bg-white border border-gold-300 rounded-xl px-3.5 py-2.5 text-sm focus:ring-2 focus:ring-gold-500 outline-none">
+                            <option value="07:00">07:00</option>
+                            <option value="08:30">08:30</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:30">11:30</option>
+                            <option value="13:30">13:30</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:30">16:30</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-bold text-charcoal mb-1">Observações ou Dúvidas</label>
+                    <textarea id="bookNotes" rows="2" placeholder="Ex: Gostaria de tirar dúvida sobre tinta..." class="w-full bg-white border border-gold-300 rounded-xl px-3.5 py-2.5 text-sm focus:ring-2 focus:ring-gold-500 outline-none"></textarea>
+                </div>
+
+                <!-- AVISO DO SINAL -->
+                <div class="p-3 bg-gold-100/80 rounded-xl border border-gold-200 text-[11px] text-gold-900 leading-snug">
+                    <i class="fa-solid fa-circle-info text-gold-700 mr-1"></i>
+                    <strong>Aviso importante:</strong> Para confirmação final da agenda é necessário o envio do comprovante do sinal de R$ 30,00 (Chave PIX no WhatsApp).
+                </div>
+
+                <button type="submit" class="w-full py-3.5 rounded-2xl gold-gradient text-white font-bold text-sm shadow-lg hover:scale-[1.01] transition-all flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Confirmar Agendamento no WhatsApp</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- 2. MODAL DE INSTAGRAM -->
+    <div id="instagramModal" class="fixed inset-0 bg-charcoal/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card bg-cream-50 rounded-3xl max-w-md w-full p-6 sm:p-8 border border-gold-300 shadow-2xl relative text-center">
+            <button onclick="closeInstagramModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-gold-100 text-gold-800 flex items-center justify-center hover:bg-gold-200 transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600 text-white flex items-center justify-center mx-auto mb-4 text-3xl shadow-lg">
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+
+            <h3 class="font-serif-title text-2xl font-bold text-charcoal">@thalita.silveira.fios</h3>
+            <p class="text-xs text-gray-600 mt-1 mb-6">Acompanhe nossos resultados de transformação capilar, antes & depois e dicas de saúde dos fios no perfil oficial!</p>
+
+            <div class="p-4 bg-white rounded-2xl border border-gold-200 mb-6 space-y-2">
+                <div class="flex justify-around text-center text-xs">
+                    <div>
+                        <strong class="block text-sm font-bold text-charcoal">Terapia Capilar</strong>
+                        <span class="text-gray-500">Saúde dos Fios</span>
+                    </div>
+                    <div class="border-r border-gold-200"></div>
+                    <div>
+                        <strong class="block text-sm font-bold text-charcoal">Resultados</strong>
+                        <span class="text-gray-500">Reais & Reais</span>
+                    </div>
+                </div>
+            </div>
+
+            <a href="https://www.instagram.com/thalita.silveira.fios" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white font-bold text-sm shadow-md hover:opacity-95 transition-all flex items-center justify-center gap-2">
+                <i class="fa-brands fa-instagram text-lg"></i>
+                <span>Abrir Instagram da Thalita</span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- 3. MODAL DE POLÍTICAS E PIX -->
+    <div id="policiesModal" class="fixed inset-0 bg-charcoal/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card bg-cream-50 rounded-3xl max-w-lg w-full p-6 sm:p-8 border border-gold-300 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closePoliciesModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-gold-100 text-gold-800 flex items-center justify-center hover:bg-gold-200 transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <h3 class="font-serif-title text-2xl font-bold text-charcoal">Políticas & Pagamentos</h3>
+                <p class="text-xs text-gray-600">Informações completas para sua reserva</p>
+            </div>
+
+            <div class="space-y-4 text-xs">
+                <div class="bg-white p-4 rounded-2xl border border-gold-200 space-y-2">
+                    <h4 class="font-bold text-gold-800 text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-emerald-600"></i> Sinal de Reserva de Horário
+                    </h4>
+                    <p class="text-gray-600 leading-relaxed">
+                        Para confirmação da agenda é solicitado o pagamento do sinal no valor de <strong>R$ 30,00</strong>. Esse valor é abatido inteiramente no dia da realização do serviço.
+                    </p>
+                </div>
+
+                <div class="bg-white p-4 rounded-2xl border border-gold-200 space-y-2">
+                    <h4 class="font-bold text-gold-800 text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-qrcode text-emerald-600"></i> Chave PIX Oficial (CNPJ)
+                    </h4>
+                    <p class="font-mono text-center p-2 bg-gold-50 rounded-xl font-bold text-sm text-charcoal border border-gold-200 select-all">
+                        69.639.535/0001-03
+                    </p>
+                    <p class="text-[11px] text-gray-500 text-center">Titular: Thalita Roberta Silveira de Souza da Costa</p>
+                    
+                    <button onclick="copyPixKey('69.639.535/0001-03')" class="w-full py-2.5 rounded-xl bg-gold-100 hover:bg-gold-200 text-gold-900 font-semibold transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-regular fa-copy"></i>
+                        <span>Copiar Chave PIX</span>
+                    </button>
+                </div>
+
+                <div class="bg-white p-4 rounded-2xl border border-gold-200 space-y-2">
+                    <h4 class="font-bold text-gold-800 text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-clock text-gold-600"></i> Horário & Tolerância
+                    </h4>
+                    <p class="text-gray-600">
+                        • Atendimento de Terça a Sábado das 07h00 às 18h00.<br>
+                        • Tolerância de atraso de no máximo 15 minutos.<br>
+                        • Reagendamentos com antecedência mínima de 24h.
+                    </p>
+                </div>
+            </div>
+
+            <button onclick="closePoliciesModal()" class="w-full mt-6 py-3 rounded-2xl gold-gradient text-white font-bold text-xs">
+                Entendi
+            </button>
+        </div>
+    </div>
+
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // WHATSAPP PHONE NUMBER
+        const WHATSAPP_NUMBER = "5522998578815";
+
+        // FILTER CATEGORIES
+        function filterCategory(category) {
+            const tabs = document.querySelectorAll('.cat-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('gold-gradient', 'text-white', 'shadow-sm');
+                tab.classList.add('bg-white', 'text-gray-700', 'border', 'border-gold-200');
+            });
+
+            // Highlight clicked tab
+            event.currentTarget.classList.remove('bg-white', 'text-gray-700', 'border', 'border-gold-200');
+            event.currentTarget.classList.add('gold-gradient', 'text-white', 'shadow-sm');
+
+            const cards = document.querySelectorAll('.service-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // SCROLL HELPER
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // MOBILE MENU TOGGLE
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // BOOKING MODAL LOGIC
+        function openBookingModal(serviceName = 'Atendimento Terapêutico Capilar', price = null) {
+            document.getElementById('bookService').value = serviceName;
+            
+            // Set min date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('bookDate').min = today;
+            if(!document.getElementById('bookDate').value) {
+                document.getElementById('bookDate').value = today;
+            }
+
+            document.getElementById('bookingModal').classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+        }
+
+        // SUBMIT BOOKING TO WHATSAPP
+        function submitBooking(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('bookName').value.trim();
+            const phone = document.getElementById('bookPhone').value.trim();
+            const length = document.getElementById('bookHairLength').value;
+            const service = document.getElementById('bookService').value;
+            const date = document.getElementById('bookDate').value;
+            const time = document.getElementById('bookTime').value;
+            const notes = document.getElementById('bookNotes').value.trim();
+
+            // Format Brazilian Date
+            const dateParts = date.split('-');
+            const formattedDate = `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`;
+
+            // Build Message
+            let message = `✨ *SOLICITAÇÃO DE AGENDAMENTO - TS HAIR THERAPY* ✨\n\n`;
+            message += `👤 *Nome:* ${name}\n`;
+            message += `📞 *Telefone:* ${phone}\n`;
+            message += `💇‍♀️ *Comprimento do Cabelo:* ${length}\n`;
+            message += `💆‍♀️ *Procedimento:* ${service}\n`;
+            message += `📅 *Data Desejada:* ${formattedDate}\n`;
+            message += `⏰ *Horário Preferencial:* ${time}h\n`;
+            
+            if (notes) {
+                message += `📝 *Observações:* ${notes}\n`;
+            }
+
+            message += `\n📌 *Estou ciente do sinal de R$ 30,00 para garantia da vaga.* Gostaria de confirmar a disponibilidade deste horário!`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+
+            window.open(whatsappUrl, '_blank');
+            closeBookingModal();
+        }
+
+        // INSTAGRAM MODAL
+        function openInstagramModal() {
+            document.getElementById('instagramModal').classList.remove('hidden');
+        }
+
+        function closeInstagramModal() {
+            document.getElementById('instagramModal').classList.add('hidden');
+        }
+
+        // POLICIES MODAL
+        function openPoliciesModal() {
+            document.getElementById('policiesModal').classList.remove('hidden');
+        }
+
+        function closePoliciesModal() {
+            document.getElementById('policiesModal').classList.add('hidden');
+        }
+
+        // COPY PIX KEY
+        function copyPixKey(key) {
+            // Using execCommand for compatibility in framed environments
+            const tempInput = document.createElement('input');
+            tempInput.value = key;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            const btnText = document.getElementById('pixCopyBtnText');
+            if (btnText) {
+                const originalText = btnText.innerText;
+                btnText.innerText = 'Chave PIX Copiada com Sucesso! ✓';
+                setTimeout(() => {
+                    btnText.innerText = originalText;
+                }, 2500);
+            }
+        }
+
+        // CALCULATOR LOGIC
+        function updateCalculatedPrice() {
+            const serviceSelect = document.getElementById('calcService');
+            const basePrice = parseFloat(serviceSelect.value) || 0;
+            const extraLength = parseFloat(document.getElementById('calcLength').value) || 0;
+
+            const selectedOption = serviceSelect.options[serviceSelect.selectedIndex];
+            const serviceName = selectedOption.getAttribute('data-name');
+
+            // Apply length addition only for length-variable treatments (Alinhamento, Escova, etc.)
+            let totalPrice = basePrice;
+            if (['Alinhamento Consciente', 'Liso em Movimento', 'Assinatura dos Cachos', 'Tonalização', 'Banho de Brilho'].includes(serviceName)) {
+                totalPrice += extraLength;
+            }
+
+            document.getElementById('calcTotalDisplay').innerText = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
+        }
+
+        function bookFromCalculator() {
+            const serviceSelect = document.getElementById('calcService');
+            const selectedOption = serviceSelect.options[serviceSelect.selectedIndex];
+            const serviceName = selectedOption.getAttribute('data-name');
+            
+            openBookingModal(serviceName);
+        }
+
+        // Close Modals on Backdrop Click
+        window.onclick = function(event) {
+            const bookingModal = document.getElementById('bookingModal');
+            const instagramModal = document.getElementById('instagramModal');
+            const policiesModal = document.getElementById('policiesModal');
+
+            if (event.target === bookingModal) closeBookingModal();
+            if (event.target === instagramModal) closeInstagramModal();
+            if (event.target === policiesModal) closePoliciesModal();
+        }
+    </script>
+</body>
+</html>
